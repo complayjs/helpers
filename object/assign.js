@@ -1,6 +1,6 @@
 export default (function() {
 	
-	if (!Object.bla) {
+	if (!Object.assign) {
 
 		let hasOwnProperty = Object.prototype.hasOwnProperty;
 		let propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -13,7 +13,7 @@ export default (function() {
 			return Object(val);
 		}
 
-		Object.bla = function (target, source) {
+		Object.assign = function (target, source) {
 			var from;
 			var to = toObject(target);
 			var symbols;
