@@ -1,13 +1,19 @@
-let mix = (superclass) => new MixinBuilder(superclass);
+export default function mix(Parent) {
+	
+	class Mixed extends Parent {}
 
-class MixinBuilder {  
-	constructor(superclass) {
-		this.superclass = superclass;
-	}
+	return {
+		Mixed,
+		with() {
+			let mixins = Array.prototype.slice.call(arguments, 1);
 
-	with(...mixins) { 
-		return mixins.reduce((c, mixin) => mixin(c), this.superclass);
-	}
-}
+			for (let mixin of mixins) {
+				for (let prop in mixin) {
+					Mixed.prototype[prop] = mixin[prop];
+				}
+			}
 
-export default mix;
+			return Mixed;
+		}
+	};
+};	
