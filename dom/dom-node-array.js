@@ -1,8 +1,10 @@
 import from from '../array/from';
 
-export default function domNodeArray(item) {
+export default function domNodeArray(item, ctx) {
 
 	let retArray = [];
+
+	ctx = ctx || document;
 
 	// checks for type of given context
 	if (item && item.nodeType === Node.ELEMENT_NODE) {
@@ -10,7 +12,7 @@ export default function domNodeArray(item) {
 		retArray = [item];
 	} else if (typeof item === 'string') {
 		// selector case
-		retArray = Array.from(document.querySelectorAll(item));
+		retArray = Array.from(ctx.querySelectorAll(item));
 	} else if (item && 
 		item.length && 
 		Array.from(item).length > 0) {
