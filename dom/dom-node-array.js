@@ -7,7 +7,10 @@ export default function domNodeArray(item, ctx) {
 	ctx = ctx || document;
 
 	// checks for type of given context
-	if (item && item.nodeType === Node.ELEMENT_NODE) {
+	if (item === ctx) {
+		// context is item case
+		retArray = [item];
+	} else if (item && item.nodeType === Node.ELEMENT_NODE) {
 		// dom node case
 		retArray = [item];
 	} else if (typeof item === 'string') {
