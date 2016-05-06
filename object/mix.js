@@ -11,8 +11,12 @@ export default function mix(Parent) {
 					Mixed.prototype[prop] = mixin[prop];
 				}
 
-				for (let prop in mixin.prototype) {
-					Mixed.prototype[prop] = mixin.prototype[prop];
+				let protoProps = Object.getOwnPropertyNames(mixin.prototype);
+
+				for (let prop in protoProps) {
+					if (protoProps[prop] !== 'constructor' && mixin.prototype[protoProps[prop]]) {
+						Mixed.prototype[protoProps[prop]] = mixin.prototype[protoProps[prop]];
+					}
 				}
 			}
 
