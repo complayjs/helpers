@@ -1,5 +1,5 @@
 export default function merge(first, second) {
-	var len = +second.length,
+	let len = +second.length,
 		j = 0,
 		i = first.length;
 
