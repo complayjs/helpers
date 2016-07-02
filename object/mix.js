@@ -1,7 +1,9 @@
 export default function mix(Parent) {
 
 	class Mixed extends Parent {}
-
+	/**
+	 * @todo keepings and overrides needs test
+	 */
 	return {
 		keepings: ['constructor'],
 		overrides: [],
