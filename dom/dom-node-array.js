@@ -1,4 +1,5 @@
 import from from '../array/from';
+import isDomNode from './is-dom-node';
 
 export default function domNodeArray(item, ctx) {
 
@@ -10,7 +11,7 @@ export default function domNodeArray(item, ctx) {
 	if (item === ctx) {
 		// context is item case
 		retArray = [item];
-	} else if (item && item.nodeType === Node.ELEMENT_NODE) {
+	} else if (isDomNode(item)) {
 		// dom node case
 		retArray = [item];
 	} else if (typeof item === 'string') {
