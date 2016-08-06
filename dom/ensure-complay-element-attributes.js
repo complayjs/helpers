@@ -1,11 +1,16 @@
-export default function ensureComplayElementAttributes(options) {
-    let element = options.el;
+export default function ensureComplayElementAttributes(options, dataAttributeKey = 'jsComponent') {
 
-    if (!element.dataset.jsComponent) {
-        element.dataset.jsComponent = options.dataAttributeName;
-    } else if (element.dataset.jsComponent.indexOf(options.dataAttributeName) === -1) {
-        element.dataset.jsComponent = element.dataset.jsComponent.length > 0 ?
-            `${element.dataset.jsComponent} ${options.dataAttributeName}` :
+    let element = options.el || options.context;
+
+    if (document && element === document) {
+        element = document.documentElement;
+    }
+
+    if (!element.dataset[dataAttributeKey]) {
+        element.dataset[dataAttributeKey] = options.dataAttributeName;
+    } else if (element.dataset[dataAttributeKey].indexOf(options.dataAttributeName) === -1) {
+        element.dataset[dataAttributeKey] = element.dataset[dataAttributeKey].length > 0 ?
+            `${element.dataset[dataAttributeKey]} ${options.dataAttributeName}` :
             `${options.dataAttributeName}`;
     }
 
