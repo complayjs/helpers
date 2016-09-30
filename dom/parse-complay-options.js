@@ -20,7 +20,7 @@ export default function parseComplayOptions(el, item) {
 
     if (options && typeof options === 'string') {
 
-        let name = item.name || item.es5name;
+        let name = item.identifier || item.name;
 
         // if <div data-js-options="{'show': true}"> is used,
         // instead of <div data-js-options='{"show": true}'>
